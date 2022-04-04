@@ -4,9 +4,6 @@ import SSO_project.entity.UserAccount;
 import common.TimeUtil;
 import org.testng.annotations.DataProvider;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class DataTestSSO {
     // invalid email keyword
     public String email_missing_symbol = "testlogigear#logigear.com";
@@ -80,8 +77,6 @@ public class DataTestSSO {
             "pass-02468", "pass-2468", "Logigear Test", "Logigear",
             "Germany", "Berlin", "0795232226");
 
-    public  UserAccount valid_account_update_profile = new UserAccount("internal test","please igroned",
-            "tester_logi_1@yopmail.com","tester_logi_1_1","tester_logi_1_1","","","","","");
     public UserAccount valid_account_empty_optional_fields = new UserAccount("internal testing only", "please ignored",
             "qatestinglogigear" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss") + "@gmail.com",
             "pass-02468", "pass-2468", "", "",
@@ -607,48 +602,6 @@ public class DataTestSSO {
         data[8][0] = pw_valid_strong;
         data[8][1] = pw_valid_strong;
         data[8][2] = empty_text;
-        return data;
-    }
-
-    @DataProvider
-    public Object[] getDataToCheckUIUpdateProfilePage() {
-        Object[] data = new Object[1];
-        data[0] = valid_account_update_profile ;
-
-        return data;
-    }
-
-    @DataProvider
-    public Object[] getDataForFieldNameUpdateProfilePage() {
-        Object[][] data = new Object[5][3];
-        // row 1, the texts are long
-        data[0][0] = text_284_characters;
-        data[0][1] = text_284_characters;
-        data[0][2] = error_msg_special_letters_for_name;
-
-        // row 2, the texts consist white space letters at the beginning and ending places
-        data[1][0] = text_white_space_at_begining_ending;
-        data[1][1] = text_white_space_at_begining_ending.trim();
-        data[1][2] = error_msg_special_letters_for_name;;
-        // row 3, the texts consist a few unicode letters
-        data[2][0] = name_by_unicode_text;
-        data[2][1] = name_by_unicode_text;
-        data[2][2] = empty_text;
-        // row 4, the texts consist a few special letters
-        data[3][0] = name_contain_special_char;
-        data[3][1] = name_contain_special_char;
-        data[3][2] = error_msg_special_letters_for_name;
-
-        data[4][0]=empty_text;
-        data[4][1]=empty_text;
-        data[4][2]=error_msg_empty_field;
-
-        return data;
-    }
-
-    @DataProvider
-    public  Object[] getImageToChangeAvatar(){
-        Object[][] data = new Object[2][2];
         return data;
     }
 

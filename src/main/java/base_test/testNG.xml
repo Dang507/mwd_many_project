@@ -9,14 +9,13 @@
 <!--            <class name="SSO_project.test_case.ForgotPwTc"/>-->
 <!--            <class name="SSO_project.test_case.LoginTc"/>-->
 <!--            <class name="SSO_project.test_case.ChangePwTc"/>-->
-            <class name="SSO_project.test_case.UpdateProfileTc"/>
 <!--            <class name="SSO_project.temp"/>-->
 <!--            <class name="SSO_project.test_case.SignUpTc"/>-->
 <!--            <class name="SSO_project.test_case.ActiveCodeTc"/>-->
 <!--            <class name="SSO_admin_portal.test_case.AddUserTc"/>-->
 <!--            <class name="SSO_admin_portal.temp2"/>-->
 <!--            <class name="projects.Pre_Test_Sele_2.test_case.SearchingResultTc"/>-->
-<!--            <class name="projects.TA_web.test_case.user_portal.LeaveAMessageTC"/>-->
+            <class name="projects.TA_web.test_case.user_portal.LeaveAMessageTC"/>
         </classes>
     </test>
 </suite>
