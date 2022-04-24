@@ -61,10 +61,34 @@ public interface IGeneralAction {
     void waitElementInteraction(WebDriver webDriver, WebElement webElement, int timeOut);
 
     /**
-     *
+     * 1. Level: Low
+     * 2. Purpose: Verify the text is same to the design
+     * 3. Scope: Use it when verify the text is got by element attribute
+     * @param expectedText: The text is expected
+     * @param actualText: The text is displaying on the web page
      */
+    void verifyTextEqual(String expectedText, String actualText);
 
+    /**
+     * 1. Level: Low
+     * 2. Purpose: Verify the text is same to the design
+     * 3. Scope: Use it when verify the text is got by element attribute
+     * @param expectedText: The text is expected
+     * @param attribute: The attribute of the element
+     */
+    void verifyAttributeText(String expectedText, WebElement webElement, String attribute);
 
+    /**
+     * 1. Level: Low
+     * 2. Purpose: Verify the error message appears appropriate in case the user enters any values to the input field
+     * 3. Scope: Use it in case the user enters a value to a input field, then click another web element.
+     * @param inputElement: The text is expected
+     * @param value: The attribute of the element
+     * @param subElement: The attribute of the element
+     */
+    void enterValueOneField(WebElement inputElement, String value, WebElement subElement);
+
+    void enterValueAFieldByTyping(WebElement inputElement, String value, WebElement subElement);
 
 
 }

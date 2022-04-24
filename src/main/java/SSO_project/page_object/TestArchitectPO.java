@@ -21,6 +21,9 @@ public class TestArchitectPO {
     @FindBy(xpath = "//a[text()='Logout']")
     public WebElement optLogout;
 
+    @FindBy(xpath = "//a[contains(text(),'Manage My Profile')]")
+    public WebElement optUpdateProfile;
+
     public TestArchitectPO(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
     }

@@ -11,4 +11,5 @@ public interface ISSOUtilA {
     void hoverMenuAndClickItem(WebDriver webDriver, WebElement menuElement, WebElement itemToClick);
     void waitElementInteraction(WebDriver webDriver, WebElement webElement, int timeOut);
     void highlightAllTextOfInPutField(WebDriver webDriver, WebElement webElement);
+    int createRandomIntegerNumber(int limit);
 }

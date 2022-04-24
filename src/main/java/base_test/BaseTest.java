@@ -32,7 +32,7 @@ public class BaseTest {
         try {
             switch (myBrowser) {
                 case "chrome":
-                    WebDriverManager.chromedriver().setup();
+                    System.setProperty("webdriver.chrome.driver", "D:\\chromedriver_win32\\chromedriver.exe");
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();

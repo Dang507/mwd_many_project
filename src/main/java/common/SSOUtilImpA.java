@@ -53,7 +53,8 @@ public class SSOUtilImpA implements ISSOUtilA {
      * @param timeMilliSecond: The period time to stop all thread
      */
     public void setThreadSleep(long timeMilliSecond) throws InterruptedException {
-        Thread.sleep(timeMilliSecond);
+            Thread.sleep(timeMilliSecond);
+
     }
 
     public void hoverMenuAndClickItem(WebDriver webDriver, WebElement menuElement, WebElement itemToClick){
@@ -78,4 +79,10 @@ public class SSOUtilImpA implements ISSOUtilA {
         actions.sendKeys(Keys.END).build().perform();
         actions.keyUp(Keys.LEFT_SHIFT);
     }
+
+    @Override
+    public int createRandomIntegerNumber(int limit) {
+        return (int) (Math.random()*limit);
+    }
+
 }

@@ -36,8 +36,8 @@ public class temp extends BaseTest {
         IGeneralAction generalA = new GeneralAction();
         DataTestSSO dataTestSSO = new DataTestSSO();
         UserAccount userAccount = dataTestSSO.inactivated_SSO_account;
-        String newPw = dataTestSSO.pw_is_over_128_letters;
-        String confirmPw = dataTestSSO.pw_is_over_128_letters;
+        String newPw = dataTestSSO.pw_is_over_100_letters;
+        String confirmPw = dataTestSSO.pw_is_over_100_letters;
 
         try {
             LogReport.logMainStep("1. Login with an inactivated account");

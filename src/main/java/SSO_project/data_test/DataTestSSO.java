@@ -22,9 +22,10 @@ public class DataTestSSO {
     public String pw_only_string = "StringPassword";
     public String pw_contain_special_char = "12#$/|().<>,";
     public String pw_has_whitespace = "#Fex123    ;Test-";
+
     public String pw_not_enough_length = "#Fex123";
     public String pw_is_over_100_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345p";
-    public String pw_is_over_128_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345";
+    public String pw_is_130_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345";
 
     // valid password keyword
     public String pw_activated_1 = "pass-2468";
@@ -49,18 +50,19 @@ public class DataTestSSO {
     // valid phone number keyword
     public String valid_phone_1 = "0909999990";
     public String valid_phone_2 = "+84 0905 231118";
-    public String phone_has_space_at_beginning_ending = " 0905 231 118 ";
+    public String phone_has_space_at_beginning_ending = " +44 905 231118";
 
     // valid first name keyword
     public String name_by_unicode_text = "Khánh らが 123";
     public String name_contain_special_char = "Test $@/[~<;`/*-+,./;'[]\\-=_+{}|:<>?`~#%";
-    public String name_extensive_text = "Our codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editorOur codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editor";
+    public String name_extensive_text_300_letters = "Our codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editorOur codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editor";
     public String name_long_text_display = "Our codeless automation tool allows you to rapidly scale and mai";
 
     public String text_white_space_at_begining_ending = "  TEst    ";
+    public String number_white_space_at_beging_end = "  2468    ";
 
     public UserAccount activated_SSO_account = new UserAccount("internal testing only",
-            "please ignored", "qatesting64@yopmail.com", "pass-02468",
+            "please ignored", "qatesting117@yopmail.com", "pass-02468",
             "pass-02468", "Logigear Test", "Logigear", "Uganda", "Abim", "0909999990");
 
     public UserAccount inactivated_SSO_account = new UserAccount("internal testing only", "please ignored",
@@ -84,6 +86,7 @@ public class DataTestSSO {
 
     // error message for the empty field
     public String error_msg_empty_field = "This field is required.";
+    public String error_msg_empty_image_field = "The image is required.";
 
     // empty text
     public String empty_text = "";
@@ -98,7 +101,7 @@ public class DataTestSSO {
     public String error_msg_same_pw = "Your new password is same as your old password. Please use another password.";
     public String success_msg = "Success!";
     public String error_msg_confirm_pw = "Confirm password value must be the same password.";
-    public String error_msg_current_pw_wrong = "Your current password cannot match";
+    public String error_msg_current_pw_wrong = "Your current password cannot match.";
 
     // Reminder page
     public String textContent = "To verify your identity, a security code has been sent to you. Please check the link in the email or coppy and pass the security code here:";
@@ -121,15 +124,41 @@ public class DataTestSSO {
     public String error_msg_invalid_email = "Please enter a valid email.";
     public String error_msg_email_no_existing_in_database = "Email not existing in database.";
 
+    // attached file error message
+    public String error_msg_huge_size = "File size must be < 5MB.";
+    public String error_msg_wrong_file_type = "The file must be a file of type: jpeg, jpg, png";
+
     // Register page, the first / last name
     public String error_msg_special_letters_for_name = "Please remove special characters.";
-    public String error_msg_long_string = "Please enter no more than 100 characters.";
+//    public String error_msg_long_string = "Please enter no more than 100 characters.";
+
+    // [TA web][TA portal] page Leave a message, success and failed message
+    public String text_send_msg_failed = "The message has been sent unsuccessfully.";
+    public String text_send_message_successful = "The message has been sent successfully.";
 
     // Login page
     public String error_msg_wrong_email_or_pw = "Incorrect email or password. Please try again!";
 
+    // error message for field 'limit for a number'
+    public String error_msg_number_must_more_than_1 = "Must more than 1.";
+
     // extensive text
     public String text_284_characters = "Are you looking for a Test Automation tool that can bring all of your team members into a collaborative Automation production process? If so, TestArchitect is a great fit. With TestArchitect, you can leverage a smaller programming staff to support a much larger non-programming staff.";
+
+    // message for TA Portal
+    public String success_msg_update_coupon_type = "The Coupon Type has been updated successfully.";
+    public String success_msg_add_coupon_type = "The Coupon Type has been added successfully.";
+    public String success_msg_delete_coupon_type = "The Coupon Type has been deleted successfully.";
+    public String success_msg_change_pw = "Your password has been changed successfully.";
+    public String failed_msg_change_pw = "Your new password is same as your old password. Please use another password.";
+    public String error_msg_only_number = "Integer number only";
+    public String error_msg_value_existed = "Value is existed";
+
+    // image for testing
+    public String valid_image_file_path_jpeg = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\cute-cat-icon-vector.jpg";
+    public String valid_image_file_path_png = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\phoenix funny.png";
+    public String valid_image_file_path_jfif = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\images.jfif";
+    public String image_larger_than_10mbs_file_path_jpg = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\vocabulary_popular.jpg";
 
     public DataTestSSO() {
     }
@@ -272,7 +301,7 @@ public class DataTestSSO {
         data[7][0] = pw_activated_strong;
         data[7][1] = "";
         // row 9, the password text is over 100 letters
-        data[8][0] = pw_is_over_100_letters;
+        data[8][0] = pw_is_130_letters;
         data[8][1] = error_msg_extensive_pw;
         // row 9, the password text is valid
         data[9][0] = pw_activated_1;
@@ -314,7 +343,7 @@ public class DataTestSSO {
         data[5][1] = data[5][0];
         data[5][2] = "";
         // row 7, the password text is over 100 letters
-        data[6][0] = pw_is_over_100_letters;
+        data[6][0] = pw_is_130_letters;
         data[6][1] = data[6][0];
         data[6][2] = "";
         // row 8, the password text is valid and it consist a few special letters
@@ -401,7 +430,7 @@ public class DataTestSSO {
         Object[][] data = new Object[1][2];
         // row 1, the texts are long
         data[0][0] = valid_account_all_fields_available;
-        data[0][1] = name_extensive_text;
+        data[0][1] = name_extensive_text_300_letters;
         return data;
     }
 
@@ -531,8 +560,8 @@ public class DataTestSSO {
         data[7][3] = error_msg_same_pw;
         // row 9, new password, confirm password are greater than 100 letters
         data[8][0] = inactivated_SSO_account;
-        data[8][1] = pw_is_over_128_letters;
-        data[8][2] = pw_is_over_128_letters;
+        data[8][1] = pw_is_130_letters;
+        data[8][2] = pw_is_130_letters;
         data[8][3] = empty_text;
         // row 10, new password, confirm password differences
         data[9][0] = activated_SSO_account;
@@ -591,8 +620,8 @@ public class DataTestSSO {
         data[5][1] = pw_has_whitespace;
         data[5][2] = error_msg_message_pw;
         // row 7,
-        data[6][0] = pw_is_over_100_letters;
-        data[6][1] = pw_is_over_100_letters;
+        data[6][0] = pw_is_130_letters;
+        data[6][1] = pw_is_130_letters;
         data[6][2] = error_msg_confirm_pw;
         // row 8,
         data[7][0] = pw_activated_1;

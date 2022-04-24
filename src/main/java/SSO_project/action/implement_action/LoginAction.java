@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginAction implements ILoginAction {
 
+    @Override
     public void checkLoginPageGUI(LoginPO loginPO) {
         IGeneralAction generalA = new GeneralAction();
         generalA.verifyElementDisplayed(loginPO.imgLogoLogiGear, "The logo image 'LogiGear'");
@@ -29,6 +30,7 @@ public class LoginAction implements ILoginAction {
         generalA.verifyElementDisplayed(loginPO.linkForgotPw, "The link 'Forgot password?'");
     }
 
+    @Override
     public void loginSSO(LoginPO loginPO, UserAccount userAccount) {
         loginPO.inputPassword.sendKeys(userAccount.getPassword());
         loginPO.inputEmail.sendKeys(userAccount.getEmail());

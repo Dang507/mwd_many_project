@@ -6,6 +6,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,16 +18,18 @@ public class GeneralAction implements IGeneralAction {
      * 1. Purpose: Verify a text message content on the page as the designed, and the result is logged to a particular step on
      * report.
      */
+    @Override
     public void verifyTextDisplay(String expectedText, WebElement webElement, boolean isInputField) {
         if (isInputField) {
-            verifyTextIsTheSame(expectedText, webElement.getAttribute("value"));
+            verifyTextEqual(expectedText, webElement.getAttribute("value"));
         } else {
-            verifyTextIsTheSame(expectedText, webElement.getText());
+            verifyTextEqual(expectedText, webElement.getText());
         }
     }
 
-    public void verifyTextIsTheSame(String expectedText, String actualText){
-        if (expectedText.equals(actualText)) {
+    @Override
+    public void verifyTextEqual(String expectedText, String actualText){
+        if (expectedText.equals(actualText) || actualText.matches(expectedText)) {
             System.out.println("Test passed");
             ExtentReportManager.subStep.log(Status.PASS, MarkupHelper.createLabel("Expected result: " + expectedText + "<br>" +
                     "Actual result: " + actualText, ExtentColor.GREEN));
@@ -37,6 +40,11 @@ public class GeneralAction implements IGeneralAction {
                     "Actual result: " + actualText, ExtentColor.ORANGE));
             LogReport.logImage64ToReport(false);
         }
+    }
+
+    @Override
+    public void verifyAttributeText(String expectedText, WebElement webElement, String attribute) {
+        verifyTextEqual(expectedText, webElement.getAttribute(attribute));
     }
 
     @Override
@@ -89,7 +97,7 @@ public class GeneralAction implements IGeneralAction {
 
     @Override
     public void setupWebdriverTimeOut(WebDriver webDriver) {
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         webDriver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         webDriver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
     }
@@ -101,7 +109,32 @@ public class GeneralAction implements IGeneralAction {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
+    @Override
+    public void enterValueOneField(WebElement inputElement, String value, WebElement subElement) {
+        if (!(subElement ==null)) {
+            Actions actions = new Actions(Constant.webDriver);
+            inputElement.clear();
+            inputElement.sendKeys(value);
+           actions.moveToElement(subElement).click().perform();
+           subElement.click();
 
+        }
+        inputElement.clear();
+        inputElement.sendKeys(value);
+
+    }
+
+    @Override
+    public void enterValueAFieldByTyping(WebElement inputElement, String value, WebElement subElement) {
+        inputElement.clear();
+        String Oneletter;
+        StringBuilder tempText = new StringBuilder();
+        for (int i = 0; i < value.length(); i++){
+            Oneletter = value.charAt(i) + "";
+            inputElement.sendKeys(Oneletter);
+        }
+        subElement.click();
+    }
 
 
 }
